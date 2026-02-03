@@ -243,7 +243,7 @@ const LiquorDetailView = ({ liquor, onEdit }) => {
           <div>
             <h3 className="text-3xl font-bold text-gray-900 leading-tight mb-2 flex items-center gap-2">
               {liquor.name}
-              <a href={`https://www.google.com/search?q=${encodeURIComponent(liquor.name + ' ' + (liquor.category || ''))}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-600"><ExternalLink className="w-6 h-6" /></a>
+              <a href={`https://www.google.com/search?q=${encodeURIComponent(liquor.name )}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-indigo-600"><ExternalLink className="w-6 h-6" /></a>
             </h3>
             <p className="text-lg text-gray-500 font-medium">{liquor.producer}</p>
           </div>
@@ -305,7 +305,7 @@ const LiquorListItem = ({ liquor, onDelete, onEdit, onSelect }) => {
       <td className="p-3 border align-middle text-center w-[200px]">
         <div className="flex flex-col items-center gap-1">
           <a 
-            href={`https://www.google.com/search?q=${encodeURIComponent(liquor.name + ' ' + (liquor.category || ''))}`}
+            href={`https://www.google.com/search?q=${encodeURIComponent(liquor.name )}`}
             target="_blank" 
             rel="noopener noreferrer"
             className="text-sm font-bold text-gray-900 hover:text-indigo-600 hover:underline block truncate max-w-full"
@@ -432,7 +432,7 @@ function App() {
       const prompt = `画像に写っているお酒について詳しく教えてください。JSONで詳細情報を抽出してください。
         【最重要ルール】
         1. カテゴリ、タイプは以下（2,3）の中から選ぶこと。
-        2. "category" ："ワイン", "日本酒", "焼酎", "ビール", "その他"
+        2. "category" "ワイン", "日本酒", "焼酎", "ビール", "その他"
         3. "type" はカテゴリごとに以下の中から選ぶこと。
            - ワイン："赤","白","ロゼ","スパークリング","その他"
            - 日本酒："純米大吟醸","純米吟醸","純米","特別純米","大吟醸","吟醸","本醸造","特別本醸造","普通","その他"
@@ -449,16 +449,16 @@ function App() {
            （色調、濃淡、粘性など）
            
            【香り】
-           （果実、花、スパイス、樽香などのアロマ）
+           （果実、花、スパイシーなど）
 
            【味わい】
-           （アタック、酸味、甘み、苦味、渋み、ボディ感、余韻）
+           （酸味、甘み、苦味、渋み、ボディ感、余韻など）
            
            【ペアリング】
-           （具体的な料理名や食材）
+           （具体的な料理名や食材など）
 
            【熟成】
-           （熟成方法、規定、ポテンシャルに関する事実ベースの記述。 Riservaなど等級の解説も含めて具体的に）
+           （熟成方法、規定、ポテンシャルなど。 Riservaなど等級の解説も含めて具体的に）
 
         5. "price_estimate": 日本国内での現在の一般的な小売価格帯を記入すること。不明な場合は空白。
 
